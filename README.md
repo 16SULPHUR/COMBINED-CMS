@@ -64,7 +64,7 @@ pnpm dev               # http://localhost:3000/admin, create the first admin use
 | ------------------------------------------- | --------------------------------------------------------------- |
 | `DATABASE_URL`                              | Supabase **transaction pooler** URI (port 6543)                 |
 | `PAYLOAD_SECRET`                            | Long random string used to sign auth tokens                     |
-| `NEXT_PUBLIC_SERVER_URL`                    | Public URL of this CMS                                          |
+| `NEXT_PUBLIC_SERVER_URL`                    | Public URL of this CMS, no trailing slash (e.g. `https://cms.ankit.ninja`) |
 | `CORS_ORIGINS`                              | Comma-separated frontend origins allowed to call the API        |
 | `SUPABASE_URL`                              | `https://<project-ref>.supabase.co`, used for public media URLs |
 | `S3_BUCKET`                                 | Supabase Storage bucket for media (`media`); empty = local disk |
