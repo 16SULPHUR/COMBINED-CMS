@@ -18,8 +18,17 @@ const allowedOrigins = (process.env.CORS_ORIGINS || '')
   .map((o) => o.trim())
   .filter(Boolean)
 
+const serverURL = (process.env.NEXT_PUBLIC_SERVER_URL || '').trim().replace(/\/+$/, '')
+
+// The admin's own origin must be in the CSRF list, or its cookie is ignored and saves fail as "not allowed".
+const ownOrigins = [process.env.VERCEL_PROJECT_PRODUCTION_URL, process.env.VERCEL_BRANCH_URL, process.env.VERCEL_URL]
+  .filter(Boolean)
+  .map((host) => `https://${host}`)
+
+const csrf = [...new Set([...allowedOrigins, ...ownOrigins])]
+
 export default buildConfig({
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
+  serverURL,
   admin: {
     user: Users.slug,
     importMap: {
@@ -29,7 +38,7 @@ export default buildConfig({
   collections: [Users, Media, ...projectCollections],
   globals: projectGlobals,
   cors: allowedOrigins,
-  csrf: allowedOrigins,
+  csrf,
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
