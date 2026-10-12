@@ -1,0 +1,12 @@
+{
+  "degree": "B.Tech in Computer Science Engineering",
+  "school": "Uka Tarsadia University",
+  "period": "2022 – 2026",
+  "score": {
+    "label": "CGPA",
+    "value": "9.2",
+    "outOf": "10",
+    "note": null
+  },
+  "blurb": "Data structures, algorithms, databases and software engineering, alongside internships and side projects."
+}

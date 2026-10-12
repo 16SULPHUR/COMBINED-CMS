@@ -1,0 +1,21 @@
+[
+  {
+    "company": "Rablo",
+    "title": "Backend Developer Intern",
+    "period": "Jun – Sep 2024",
+    "points": [
+      "Led a team of 12 backend developers",
+      "OAuth APIs, student categorization and Razorpay",
+      "Dynamic profile boosting logic"
+    ]
+  },
+  {
+    "company": "Krtya",
+    "title": "Full Stack Developer Intern",
+    "period": "Jan – Jun 2024",
+    "points": [
+      "Listings, orders, invoicing, payments and tracking",
+      "Responsive UI with Cashfree payments"
+    ]
+  }
+]

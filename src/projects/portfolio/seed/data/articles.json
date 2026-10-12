@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Medusa v2 Custom Payment Providers: Stripe SEPA Bank Transfer Guide",
+    "publication": "WeframeTech Blog",
+    "date": "Sep 8, 2026",
+    "readTime": "7 min read",
+    "excerpt": "Building a custom Stripe SEPA bank transfer provider for Medusa v2: all ten provider methods, signed webhooks with the raw body, local testing and the gotchas I hit along the way.",
+    "topics": [
+      "Medusa v2",
+      "Stripe",
+      "SEPA",
+      "Webhooks"
+    ],
+    "href": "https://weframetech.com/blog/medusa-v2-stripe-sepa-bank-transfer-payment-provider"
+  }
+]

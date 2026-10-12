@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Backend",
+    "tone": "#F6D5DF",
+    "items": [
+      "Node.js",
+      "NestJS",
+      "Medusa v2",
+      "Directus",
+      "Payload CMS",
+      "Express",
+      "TypeScript",
+      "Python"
+    ]
+  },
+  {
+    "name": "Data",
+    "tone": "#CBE8EE",
+    "items": [
+      "PostgreSQL",
+      "MongoDB",
+      "Prisma",
+      "Redis",
+      "BullMQ",
+      "Elasticsearch",
+      "Meilisearch"
+    ]
+  },
+  {
+    "name": "Payments & mail",
+    "tone": "#F6E7B4",
+    "items": [
+      "Stripe",
+      "Revolut",
+      "Razorpay",
+      "AWS SES",
+      "Resend"
+    ]
+  },
+  {
+    "name": "Frontend",
+    "tone": "#E3D7F4",
+    "items": [
+      "React",
+      "Next.js",
+      "TanStack Query",
+      "Tailwind"
+    ]
+  },
+  {
+    "name": "Ops",
+    "tone": "#CDEBDD",
+    "items": [
+      "Docker",
+      "Git",
+      "Supabase",
+      "Railway",
+      "GitHub Actions"
+    ]
+  },
+  {
+    "name": "Also",
+    "tone": "#FAD9C8",
+    "items": [
+      "OAuth 2.0",
+      "LLM APIs",
+      "FFmpeg",
+      "Cron jobs",
+      "Jest"
+    ]
+  }
+]

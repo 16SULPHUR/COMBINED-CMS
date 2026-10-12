@@ -1,0 +1,37 @@
+{
+  "greeting": "hey, I'm",
+  "first": "Ankit",
+  "last": "Patil",
+  "role": "Backend Engineer.",
+  "tagline": "I build backends that stay calm under load: APIs, data models, queues and payment flows. In my spare time I make open-source tools.",
+  "now": [
+    {
+      "label": "Building",
+      "value": "GutCheck, a decision gateway for AI agents",
+      "href": "https://github.com/16SULPHUR/gutcheck"
+    },
+    {
+      "label": "Shipping",
+      "value": "WebCam Bridge, your phone as a USB webcam",
+      "href": "https://github.com/16SULPHUR/webcam-bridge"
+    },
+    {
+      "label": "Open to",
+      "value": "Backend and full stack roles"
+    }
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/16sulphur"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/iankitpatil/"
+    },
+    {
+      "label": "Resume",
+      "href": "/resume"
+    }
+  ]
+}
