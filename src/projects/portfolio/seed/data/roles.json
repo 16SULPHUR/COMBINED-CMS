@@ -1,0 +1,39 @@
+[
+  {
+    "company": "WeframeTech",
+    "title": "Backend Engineer",
+    "period": "Mar 2026 – Present",
+    "color": "peach",
+    "points": [
+      "Custom payment providers for bank transfers and pay by bank, with webhook settlement, retries and automatic refunds",
+      "Multi-vendor marketplace modules: recommendations, review stats and OTP sign-in",
+      "Background jobs for catalog and price sync, audit logs and promotions",
+      "Built the Essor hiring platform backend from scratch"
+    ],
+    "tags": [
+      "Medusa v2",
+      "NestJS",
+      "PostgreSQL",
+      "Redis / BullMQ",
+      "Stripe",
+      "Meilisearch"
+    ]
+  },
+  {
+    "company": "Bizcompass",
+    "title": "Associate Backend Developer",
+    "period": "Sep 2025 – Mar 2026",
+    "color": "mint",
+    "points": [
+      "Payroll and HRMS APIs, including salary hold and loans",
+      "Task and project management with subtask workflows",
+      "Approvals and performance reviews with increment logic",
+      "Faster real-time chat APIs and search"
+    ],
+    "tags": [
+      "Node.js",
+      "Express.js",
+      "MongoDB"
+    ]
+  }
+]

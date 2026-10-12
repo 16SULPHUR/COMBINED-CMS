@@ -1,0 +1,263 @@
+{
+  "name": "Ankit Patil",
+  "role": "Backend Engineer",
+  "contact": [
+    {
+      "label": "+91 95124 67691",
+      "href": "tel:+919512467691"
+    },
+    {
+      "label": "akpatil51340@gmail.com",
+      "href": "mailto:akpatil51340@gmail.com"
+    },
+    {
+      "label": "Portfolio",
+      "href": "https://ankit.ninja"
+    },
+    {
+      "label": "GitHub",
+      "href": "https://github.com/16SULPHUR"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/iankitpatil/"
+    }
+  ],
+  "skills": [
+    {
+      "label": "Languages",
+      "items": [
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "SQL",
+        "Java",
+        "C/C++",
+        "Kotlin (Android)"
+      ]
+    },
+    {
+      "label": "Backend",
+      "items": [
+        "Node.js",
+        "NestJS",
+        "Express.js",
+        "FastAPI",
+        "REST",
+        "Webhooks",
+        "JWT/OAuth 2.0",
+        "RBAC"
+      ]
+    },
+    {
+      "label": "Commerce & CMS",
+      "items": [
+        "Medusa v2",
+        "Mercur",
+        "Directus",
+        "Payload CMS"
+      ]
+    },
+    {
+      "label": "Data & Queues",
+      "items": [
+        "PostgreSQL",
+        "MongoDB",
+        "MySQL",
+        "Prisma",
+        "Redis",
+        "BullMQ",
+        "Elasticsearch",
+        "Meilisearch"
+      ]
+    },
+    {
+      "label": "Frontend",
+      "items": [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "PWA"
+      ]
+    },
+    {
+      "label": "Integrations",
+      "items": [
+        "Stripe",
+        "Revolut",
+        "Razorpay",
+        "UPI QR",
+        "AWS SES",
+        "Resend",
+        "IMAP/SMTP",
+        "LLM APIs"
+      ]
+    },
+    {
+      "label": "DevOps & Tools",
+      "items": [
+        "Docker",
+        "Git",
+        "GitHub Actions",
+        "Supabase",
+        "Railway",
+        "Jest",
+        "Swagger / OpenAPI",
+        "Postman"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Backend Developer",
+      "org": "WeframeTech",
+      "href": "https://weframetech.com",
+      "period": "Mar 2026 – Present",
+      "stack": [
+        "Medusa v2",
+        "NestJS",
+        "TypeScript",
+        "PostgreSQL",
+        "Prisma",
+        "Redis / BullMQ",
+        "Stripe",
+        "AWS SES"
+      ],
+      "points": [
+        {
+          "lead": "Payments",
+          "text": "built custom Stripe SEPA bank-transfer and Revolut Pay by Bank providers for a multi-hub delivery marketplace, with webhook-driven settlement, partial-payment retries, automatic cancel and refund, EUR currency conversion and payment links.",
+          "link": {
+            "label": "blog post",
+            "href": "https://weframetech.com/blog/medusa-v2-stripe-sepa-bank-transfer-payment-provider"
+          }
+        },
+        {
+          "lead": "Commerce platform",
+          "text": "product APIs with price sync, a quality-control module that auto-fulfils orders, a platform-wide audit log, promotions and moderated order reviews."
+        },
+        {
+          "lead": "Essor hiring platform",
+          "text": "built from scratch: JWT refresh-token auth with an RBAC permission matrix, a configurable hiring pipeline (screening, quiz, video Q&A, assignment, interview), screen and webcam proctoring with violation tracking, and AWS SES email templates with reminder cron jobs."
+        },
+        {
+          "lead": "Multi-vendor marketplace (Mercur)",
+          "text": "product recommendations, event-driven review statistics and OTP sign-in. Wrote a Medusa v2 SEPA payments"
+        }
+      ]
+    },
+    {
+      "title": "Associate Node.js Developer",
+      "org": "Bizcompass",
+      "href": "https://bizcompass.in",
+      "period": "Sep 2025 – Feb 2026",
+      "stack": [
+        "Node.js",
+        "Express.js",
+        "MongoDB"
+      ],
+      "points": [
+        {
+          "lead": "Hold-release salary",
+          "text": "designed a configurable payroll feature to hold a month's salary, schedule its release or forfeit it based on business rules."
+        },
+        {
+          "lead": "Performance reviews",
+          "text": "built an end-to-end review module covering manager evaluations, score adjustment, automated analysis, review-based increments and controlled publishing to employees."
+        },
+        "Built HRMS, loan and task-management APIs; optimized chat APIs, search and slow queries."
+      ]
+    },
+    {
+      "title": "Backend Developer Intern",
+      "org": "Rablo",
+      "href": "https://rablo.in",
+      "period": "Jun 2024 – Sep 2024",
+      "points": [
+        "Lead a 12-member backend team; built OAuth social-login auth APIs, student categorization, geolocation and Razorpay payments, plus a rule-based profile-boosting system."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Variety Heaven POS",
+      "stack": [
+        "React",
+        "Supabase",
+        "TanStack Query",
+        "Dexie",
+        "shadcn/ui",
+        "ZXing"
+      ],
+      "link": {
+        "label": "Live",
+        "href": "https://suit.varietyheaven.in"
+      },
+      "points": [
+        "Billing, inventory, customer-credit and cashbook PWA used daily in a retail shop, with UPI QR on every invoice, phone-camera barcode scanning and label printing.",
+        "Offline invoicing on IndexedDB with a sync queue that reconciles invoice ids on reconnect; ledger, trial balance and GST reports."
+      ]
+    },
+    {
+      "name": "GutCheck",
+      "stack": [
+        "Python",
+        "FastAPI",
+        "Prometheus",
+        "Docker"
+      ],
+      "link": {
+        "label": "Live",
+        "href": "https://gutcheck,ankit.ninja"
+      },
+      "points": [
+        "Open-source decision gateway for AI agents that returns calibrated answers with an act, review or escalate verdict.",
+        "Local encoder model at ~33 ms per decision on GPU, policy engine, versioned question packs with published evals, and a feedback loop that recalibrates from real outcomes."
+      ]
+    },
+    {
+      "name": "Webcam Bridge",
+      "stack": [
+        "Kotlin",
+        "Python",
+        "FFmpeg",
+        "MediaPipe",
+        "adb"
+      ],
+      "link": {
+        "label": "GitHub",
+        "href": "https://github.com/16SULPHUR/webcam-bridge"
+      },
+      "points": [
+        "Turns an Android phone into a USB or Wi-Fi webcam for Zoom, Meet, Teams and OBS: Camera2 H.264 over adb, decoded with FFmpeg into a virtual camera.",
+        "Web dashboard, background blur, gesture reactions; released via CI as a Windows installer and on pipx."
+      ]
+    },
+    {
+      "name": "SmartMail Notifier",
+      "stack": [
+        "Node.js",
+        "TypeScript",
+        "Gemini API",
+        "Supabase Edge Functions",
+        "Elasticsearch"
+      ],
+      "link": {
+        "label": "Live",
+        "href": "https://smartmail.varietyheaven.in"
+      },
+      "points": [
+        "Real-time IMAP IDLE email sync with LLM classification, Discord alerts and Elasticsearch search."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "B.Tech, Computer Science & Engineering",
+      "school": "Uka Tarsadia University",
+      "period": "2022 – 2026",
+      "note": "CGPA 9.2/10"
+    }
+  ]
+}

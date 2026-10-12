@@ -36,6 +36,19 @@ src/
 
 Schema changes only reach the database through migrations (`push` is off), and Vercel runs `payload migrate` before each build.
 
+## Portfolio content
+
+`src/projects/portfolio/` holds the portfolio's content: collections `portfolio-projects`, `portfolio-roles`, `portfolio-internships`, `portfolio-skills`, `portfolio-articles` (drag to reorder in the admin; sort by `_order` in the API) and globals `portfolio-profile`, `portfolio-resume`, `portfolio-education`, `portfolio-contact`.
+
+`seed/data/*.json` is the content exported from the portfolio's `src/data`. Load it with:
+
+```bash
+pnpm migrate
+pnpm seed:portfolio
+```
+
+Re-running updates existing entries (matched by slug, company, name or href) instead of duplicating them.
+
 ## Local development
 
 ```bash

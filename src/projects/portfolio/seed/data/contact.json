@@ -1,0 +1,17 @@
+{
+  "greeting": "hey you,",
+  "heading": "Let's build something.",
+  "body": "Open to backend and full stack roles. Drop me a line and I'll write back.",
+  "email": "akpatil51340@gmail.com",
+  "links": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/16sulphur"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/iankitpatil/"
+    }
+  ],
+  "signoff": "— Ankit"
+}

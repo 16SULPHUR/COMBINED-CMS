@@ -1,0 +1,328 @@
+[
+  {
+    "id": "essor",
+    "name": "Essor",
+    "caption": "Essor hiring",
+    "year": "2026 · internal",
+    "group": "work",
+    "color": "aqua",
+    "shot": {
+      "title": "essor · pipeline",
+      "lines": [
+        {
+          "kind": "stages",
+          "items": [
+            {
+              "label": "Screening ✓",
+              "tone": "#CDEBDD"
+            },
+            {
+              "label": "Quiz ✓",
+              "tone": "#CDEBDD"
+            },
+            {
+              "label": "Video Q&A",
+              "tone": "#F6E7B4"
+            },
+            {
+              "label": "Interview"
+            }
+          ]
+        },
+        {
+          "kind": "row",
+          "label": "Candidate #2817",
+          "rec": true
+        },
+        {
+          "kind": "row",
+          "label": "Violations",
+          "value": "0"
+        },
+        {
+          "kind": "row",
+          "label": "Next round email",
+          "chip": "queued",
+          "tone": "#E3D7F4"
+        }
+      ]
+    },
+    "meta": "WeframeTech · May – Jul 2026 · primary author",
+    "summary": "WeframeTech's internal hiring and candidate-screening platform, backend built from scratch.",
+    "points": [
+      "Configurable pipeline: screening, quiz, custom and video Q&A, assignment, interview",
+      "Screen and webcam recording with violation tracking and IP limits",
+      "JWT with refresh tokens, Google OAuth and a role-based permission matrix",
+      "Dynamic forms, email templates over AWS SES and reminder cron jobs"
+    ],
+    "tags": [
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "AWS SES",
+      "Railway"
+    ],
+    "note": "internal tool, code is private"
+  },
+  {
+    "id": "gutcheck",
+    "name": "GutCheck",
+    "caption": "GutCheck",
+    "year": "open source",
+    "group": "side",
+    "color": "butter",
+    "shot": {
+      "title": "POST /v1/decide",
+      "lines": [
+        {
+          "kind": "meter",
+          "label": "prompt injection?",
+          "value": 0.04,
+          "verdict": "act",
+          "tone": "#CDEBDD"
+        },
+        {
+          "kind": "meter",
+          "label": "leaks PII?",
+          "value": 0.62,
+          "verdict": "review",
+          "tone": "#F6E7B4"
+        },
+        {
+          "kind": "meter",
+          "label": "needs a human?",
+          "value": 0.91,
+          "verdict": "escalate",
+          "tone": "#F6D5DF"
+        },
+        {
+          "kind": "row",
+          "label": "latency",
+          "value": "33 ms"
+        }
+      ]
+    },
+    "meta": "Open source · early development",
+    "summary": "A decision gateway for AI agents and apps. Send text and typed questions, get calibrated answers with a verdict: act, review or escalate.",
+    "points": [
+      "Runs the Laya encoder model locally, around 33 ms per decision on a GPU",
+      "Policies decide when to act, ask for review or escalate",
+      "Versioned question packs with published evals, starting with prompt-guard",
+      "Feedback loop that recalibrates from real outcomes, plus metrics",
+      "Optional OpenAI-compatible LLM fallback, Docker images for CPU and GPU"
+    ],
+    "tags": [
+      "Python",
+      "FastAPI",
+      "Laya",
+      "Prometheus",
+      "Docker"
+    ],
+    "links": [
+      {
+        "label": "Website",
+        "href": "https://gutcheck-blush.vercel.app"
+      },
+      {
+        "label": "Source",
+        "href": "https://github.com/16SULPHUR/gutcheck"
+      }
+    ]
+  },
+  {
+    "id": "webcam-bridge",
+    "name": "WebCam Bridge",
+    "caption": "WebCam Bridge",
+    "year": "open source",
+    "group": "side",
+    "color": "rose",
+    "shot": {
+      "title": "localhost:5134",
+      "lines": [
+        {
+          "kind": "stages",
+          "items": [
+            {
+              "label": "Camera2",
+              "tone": "#CBE8EE"
+            },
+            {
+              "label": "H.264",
+              "tone": "#CBE8EE"
+            },
+            {
+              "label": "adb",
+              "tone": "#E3D7F4"
+            },
+            {
+              "label": "FFmpeg",
+              "tone": "#E3D7F4"
+            },
+            {
+              "label": "vcam",
+              "tone": "#CDEBDD"
+            }
+          ]
+        },
+        {
+          "kind": "row",
+          "label": "Phone",
+          "value": "1080p · 30 fps",
+          "rec": true
+        },
+        {
+          "kind": "row",
+          "label": "Background",
+          "chip": "blurred",
+          "tone": "#CDEBDD"
+        },
+        {
+          "kind": "row",
+          "label": "Desktop pet",
+          "chip": "cat awake",
+          "tone": "#F6E7B4"
+        }
+      ]
+    },
+    "meta": "Open source · Windows installer and pipx",
+    "summary": "Use your Android phone as a USB webcam, with effects, a web dashboard and remote control.",
+    "points": [
+      "Camera2 and MediaCodec H.264 on the phone, streamed over adb to the PC",
+      "FFmpeg decode into a virtual camera that works in any video app",
+      "Virtual backgrounds with MediaPipe or Robust Video Matting, face touch-up",
+      "Reaction overlays, desktop pets and a remote control widget",
+      "Released with CI as a Windows installer and on pipx"
+    ],
+    "tags": [
+      "Kotlin",
+      "Python",
+      "FFmpeg",
+      "MediaPipe",
+      "adb"
+    ],
+    "links": [
+      {
+        "label": "Source",
+        "href": "https://github.com/16SULPHUR/webcam-bridge"
+      }
+    ]
+  },
+  {
+    "id": "pos",
+    "name": "Variety Heaven POS",
+    "caption": "Billing POS",
+    "year": "live · in use",
+    "group": "side",
+    "color": "sage",
+    "shot": {
+      "title": "pos.varietyheaven.in",
+      "lines": [
+        {
+          "kind": "row",
+          "label": "Invoice",
+          "value": "#VH-0418"
+        },
+        {
+          "kind": "barcode"
+        },
+        {
+          "kind": "row",
+          "label": "UPI QR",
+          "chip": "paid ₹2,450",
+          "tone": "#CDEBDD"
+        },
+        {
+          "kind": "row",
+          "label": "Stock",
+          "value": "8901234 → −1"
+        }
+      ]
+    },
+    "meta": "Personal project · used daily in a real shop",
+    "summary": "A billing and inventory system for a retail shop, with UPI QR payments and phone barcode scanning.",
+    "points": [
+      "UPI QR payments on every invoice",
+      "Financial-year invoicing and automatic barcode generation",
+      "Scan barcodes and QR codes with the phone camera (ZXing)",
+      "Inventory, supplier and customer management"
+    ],
+    "tags": [
+      "React",
+      "TypeScript",
+      "Supabase",
+      "shadcn/ui",
+      "ZXing"
+    ],
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://pos.varietyheaven.in"
+      },
+      {
+        "label": "Source",
+        "href": "https://github.com/16SULPHUR/VH-Invoicing/tree/dev"
+      }
+    ]
+  },
+  {
+    "id": "smartmail",
+    "name": "SmartMail Notifier",
+    "caption": "SmartMail",
+    "year": "side project",
+    "group": "side",
+    "color": "lilac",
+    "shot": {
+      "title": "smartmail.in",
+      "lines": [
+        {
+          "kind": "row",
+          "label": "Re: proposal",
+          "chip": "Interested",
+          "tone": "#CDEBDD"
+        },
+        {
+          "kind": "row",
+          "label": "Call on Friday?",
+          "chip": "Meeting",
+          "tone": "#CBE8EE"
+        },
+        {
+          "kind": "row",
+          "label": "You won a prize",
+          "chip": "Spam",
+          "tone": "#F6D5DF"
+        },
+        {
+          "kind": "row",
+          "label": "Out of office",
+          "chip": "Auto-reply"
+        }
+      ]
+    },
+    "meta": "Personal project",
+    "summary": "Email management with AI classification and real-time sync.",
+    "points": [
+      "Real-time sync over IMAP IDLE",
+      "AI categorization with the Gemini API",
+      "Discord notifications for the mails that matter",
+      "Elasticsearch for fast search"
+    ],
+    "tags": [
+      "Node.js",
+      "TypeScript",
+      "Gemini",
+      "Supabase Edge",
+      "Elasticsearch"
+    ],
+    "links": [
+      {
+        "label": "Live",
+        "href": "https://smartmail.varietyheaven.in"
+      },
+      {
+        "label": "Source",
+        "href": "https://github.com/16sulphur/smartmail-backend"
+      }
+    ]
+  }
+]
