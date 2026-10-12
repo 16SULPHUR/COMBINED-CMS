@@ -47,14 +47,19 @@ pnpm dev               # http://localhost:3000/admin, create the first admin use
 
 ## Environment variables
 
-| Name                     | Purpose                                                  |
-| ------------------------ | -------------------------------------------------------- |
-| `DATABASE_URL`           | Supabase **transaction pooler** URI (port 6543)          |
-| `PAYLOAD_SECRET`         | Long random string used to sign auth tokens              |
-| `NEXT_PUBLIC_SERVER_URL` | Public URL of this CMS                                   |
-| `CORS_ORIGINS`           | Comma-separated frontend origins allowed to call the API |
+| Name                                        | Purpose                                                         |
+| ------------------------------------------- | --------------------------------------------------------------- |
+| `DATABASE_URL`                              | Supabase **transaction pooler** URI (port 6543)                 |
+| `PAYLOAD_SECRET`                            | Long random string used to sign auth tokens                     |
+| `NEXT_PUBLIC_SERVER_URL`                    | Public URL of this CMS                                          |
+| `CORS_ORIGINS`                              | Comma-separated frontend origins allowed to call the API        |
+| `SUPABASE_URL`                              | `https://<project-ref>.supabase.co`, used for public media URLs |
+| `S3_BUCKET`                                 | Supabase Storage bucket for media (`media`); empty = local disk |
+| `S3_ENDPOINT`                               | `https://<project-ref>.storage.supabase.co/storage/v1/s3`       |
+| `S3_REGION`                                 | Supabase project region, e.g. `ap-northeast-1`                  |
+| `S3_ACCESS_KEY_ID` / `S3_SECRET_ACCESS_KEY` | Storage > S3 Connection > New access key                        |
 
-All Payload tables live in the `payload` Postgres schema, so they don't mix with anything in `public`.
+All Payload tables live in the `payload` Postgres schema, so they don't mix with anything in `public`. Media files go to the public `media` bucket in Supabase Storage and are served straight from Supabase. Uploads through the admin on Vercel are capped at about 4.5 MB per file.
 
 ## Deploying to Vercel
 
