@@ -98,12 +98,14 @@ export interface Config {
   };
   fallbackLocale: null;
   globals: {
+    'suite-copy': SuiteCopy;
     'portfolio-profile': PortfolioProfile;
     'portfolio-resume': PortfolioResume;
     'portfolio-education': PortfolioEducation;
     'portfolio-contact': PortfolioContact;
   };
   globalsSelect: {
+    'suite-copy': SuiteCopySelect<false> | SuiteCopySelect<true>;
     'portfolio-profile': PortfolioProfileSelect<false> | PortfolioProfileSelect<true>;
     'portfolio-resume': PortfolioResumeSelect<false> | PortfolioResumeSelect<true>;
     'portfolio-education': PortfolioEducationSelect<false> | PortfolioEducationSelect<true>;
@@ -647,6 +649,193 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "suite-copy".
+ */
+export interface SuiteCopy {
+  id: number;
+  /**
+   * Page title and link previews (read when the site is built, so redeploy after changing)
+   */
+  seo: {
+    title: string;
+    description: string;
+    shareTitle: string;
+    shareDescription: string;
+  };
+  /**
+   * Top bar
+   */
+  header: {
+    brandLabel: string;
+    tillLink: string;
+    demoCta: string;
+    demoCtaShort: string;
+    nav: {
+      label: string;
+      /**
+       * Section anchor such as #day
+       */
+      href: string;
+      id?: string | null;
+    }[];
+  };
+  /**
+   * Top of the page
+   */
+  hero: {
+    eyebrow: string;
+    titleLead: string;
+    titleHighlight: string;
+    titleTail: string;
+    body: string;
+    primaryCta: string;
+    secondaryCta: string;
+    aside: string;
+    pickerLabel: string;
+  };
+  /**
+   * Intro to the day at the counter
+   */
+  day: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    badge: string;
+  };
+  /**
+   * One row per scene, in page order. The picture beside each scene is picked by its slug.
+   */
+  scenes: {
+    slug: 'scan' | 'print' | 'link' | 'supplier' | 'stickers' | 'dues' | 'close' | 'gst';
+    tone: 'cloth' | 'gold' | 'cotton' | 'rose' | 'rani' | 'night' | 'leaf';
+    flip?: boolean | null;
+    kicker: string;
+    title: string;
+    lead: string;
+    points?:
+      | {
+          lead: string;
+          text: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Minutes after midnight for the wall clock, e.g. 680 is 11:20 AM. Leave empty to use the time text.
+     */
+    minutes?: number | null;
+    timeText?: string | null;
+    periodText?: string | null;
+    id?: string | null;
+  }[];
+  /**
+   * Make it yours section
+   */
+  yours: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    tabs: {
+      key: 'details' | 'gst' | 'stickers' | 'values';
+      label: string;
+      title: string;
+      text: string;
+      id?: string | null;
+    }[];
+    fixedLead: string;
+    fixedText: string;
+    fixedCta: string;
+  };
+  /**
+   * The rest of the shelf
+   */
+  shelf: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    swatches: {
+      icon: 'creditCard' | 'qrCode' | 'repeat' | 'clipboard' | 'book' | 'users' | 'calendar' | 'phone';
+      title: string;
+      text: string;
+      fabric:
+        | 'paisleyIndigo'
+        | 'paisleyNight'
+        | 'paisleyRani'
+        | 'paisleyGold'
+        | 'paisleyLeaf'
+        | 'paisleyRose'
+        | 'paisleyCloth'
+        | 'starCloth'
+        | 'starNight'
+        | 'starLeaf';
+      id?: string | null;
+    }[];
+  };
+  /**
+   * What you need
+   */
+  wired: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    links: {
+      icon: 'phone' | 'monitor' | 'printer' | 'tag';
+      title: string;
+      text: string;
+      id?: string | null;
+    }[];
+    noteLead: string;
+    noteText: string;
+  };
+  /**
+   * Price tags
+   */
+  pricing: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    badge: string;
+    plans: {
+      name: string;
+      price: string;
+      period?: string | null;
+      description: string;
+      features: string[];
+      cta: string;
+      featured?: boolean | null;
+      id?: string | null;
+    }[];
+  };
+  /**
+   * Questions
+   */
+  faq: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    cta: string;
+    items: {
+      q: string;
+      a: string;
+      id?: string | null;
+    }[];
+  };
+  /**
+   * Bottom of the page
+   */
+  footer: {
+    badge: string;
+    title: string;
+    body: string;
+    primaryCta: string;
+    secondaryCta: string;
+    tagline: string;
+    copyright: string;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio-profile".
  */
 export interface PortfolioProfile {
@@ -796,6 +985,178 @@ export interface PortfolioContact {
   signoff: string;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "suite-copy_select".
+ */
+export interface SuiteCopySelect<T extends boolean = true> {
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        shareTitle?: T;
+        shareDescription?: T;
+      };
+  header?:
+    | T
+    | {
+        brandLabel?: T;
+        tillLink?: T;
+        demoCta?: T;
+        demoCtaShort?: T;
+        nav?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+      };
+  hero?:
+    | T
+    | {
+        eyebrow?: T;
+        titleLead?: T;
+        titleHighlight?: T;
+        titleTail?: T;
+        body?: T;
+        primaryCta?: T;
+        secondaryCta?: T;
+        aside?: T;
+        pickerLabel?: T;
+      };
+  day?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        body?: T;
+        badge?: T;
+      };
+  scenes?:
+    | T
+    | {
+        slug?: T;
+        tone?: T;
+        flip?: T;
+        kicker?: T;
+        title?: T;
+        lead?: T;
+        points?:
+          | T
+          | {
+              lead?: T;
+              text?: T;
+              id?: T;
+            };
+        minutes?: T;
+        timeText?: T;
+        periodText?: T;
+        id?: T;
+      };
+  yours?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        body?: T;
+        tabs?:
+          | T
+          | {
+              key?: T;
+              label?: T;
+              title?: T;
+              text?: T;
+              id?: T;
+            };
+        fixedLead?: T;
+        fixedText?: T;
+        fixedCta?: T;
+      };
+  shelf?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        body?: T;
+        swatches?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              text?: T;
+              fabric?: T;
+              id?: T;
+            };
+      };
+  wired?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        body?: T;
+        links?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              text?: T;
+              id?: T;
+            };
+        noteLead?: T;
+        noteText?: T;
+      };
+  pricing?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        body?: T;
+        badge?: T;
+        plans?:
+          | T
+          | {
+              name?: T;
+              price?: T;
+              period?: T;
+              description?: T;
+              features?: T;
+              cta?: T;
+              featured?: T;
+              id?: T;
+            };
+      };
+  faq?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        body?: T;
+        cta?: T;
+        items?:
+          | T
+          | {
+              q?: T;
+              a?: T;
+              id?: T;
+            };
+      };
+  footer?:
+    | T
+    | {
+        badge?: T;
+        title?: T;
+        body?: T;
+        primaryCta?: T;
+        secondaryCta?: T;
+        tagline?: T;
+        copyright?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -49,6 +49,17 @@ pnpm seed:portfolio
 
 Re-running updates existing entries (matched by slug, company, name or href) instead of duplicating them.
 
+## Suite content
+
+`src/projects/suite/` holds the content for the VH Billing Suite showcase site: one global, `suite-copy` ("Site copy" in the admin), with a group for each section of the page plus lists for scenes, tabs, shelf swatches, hardware, price plans and questions. The site reads `/api/globals/suite-copy` and keeps its own bundled copy as a fallback.
+
+```bash
+pnpm migrate
+pnpm seed:suite
+```
+
+`seed/data/copy.json` is the site's current copy; re-running it overwrites the global. Add the site's address (e.g. `https://vhsuit.vercel.app`) to `CORS_ORIGINS` so the browser may fetch it. Scene slugs and icon names are drop-downs because the site draws those visuals in code.
+
 ## Local development
 
 ```bash
