@@ -1,0 +1,456 @@
+{
+  "seo": {
+    "title": "VH Billing Suite | Point of sale for any shop",
+    "description": "Billing for any shop where the price is a conversation. Set your own item details, HSN codes and sticker design. Agreed prices, GST taken out of the price, credit and dues, remote printing and the 9 PM cash count.",
+    "shareTitle": "VH Billing Suite | The price is a conversation. Your till should keep up.",
+    "shareDescription": "A point of sale for any shop, set up your way: item details, HSN codes, stickers, agreed prices, GST, credit and the 9 PM cash count."
+  },
+  "header": {
+    "brandLabel": "Billing Suite",
+    "tillLink": "Open the till",
+    "demoCta": "Ask for a demo",
+    "demoCtaShort": "Demo",
+    "nav": [
+      {
+        "label": "A day at the counter",
+        "href": "#day"
+      },
+      {
+        "label": "The shelf",
+        "href": "#shelf"
+      },
+      {
+        "label": "Price tags",
+        "href": "#pricing"
+      },
+      {
+        "label": "Questions",
+        "href": "#faq"
+      }
+    ]
+  },
+  "hero": {
+    "eyebrow": "A point of sale you set up for your own shop",
+    "titleLead": "The price is a",
+    "titleHighlight": "conversation.",
+    "titleTail": "Your till should keep up.",
+    "body": "VH Billing Suite is a point of sale for any shop that bills at a counter: clothes, groceries, hardware, gifts. We built it at our own saree shop in Surat, then made the shop-specific parts yours to set. It knows about agreed prices, GST taken out of the price, udhaar, price stickers and the 9 PM cash count, so the shop never waits on the software.",
+    "primaryCta": "Ask for a demo",
+    "secondaryCta": "Try the till below",
+    "aside": "Go on, haggle with it. The GST and change are worked out for real.",
+    "pickerLabel": "Try it as a shop that sells"
+  },
+  "day": {
+    "eyebrow": "Opening time",
+    "title": "A day at the counter.",
+    "body": "Software is easier to judge by what it does between opening and closing. Here is a day at one counter, one job at a time. Keep scrolling and the clock on the wall keeps time. Pick a different kind of shop above and the samples change with it.",
+    "badge": "દુકાન ખુલ્લી છે"
+  },
+  "scenes": [
+    {
+      "slug": "scan",
+      "tone": "gold",
+      "flip": false,
+      "kicker": "The phone as a scanner",
+      "title": "The till walks around the shop with you.",
+      "lead": "Open the app on any phone and it lands on the scanner. Scan a sticker at the rack and the item shows up on the till at the counter, live.",
+      "points": [
+        {
+          "lead": "Agreed price.",
+          "text": "Set it per item, or type what the customer settled on for the whole bill and the lines adjust to match."
+        },
+        {
+          "lead": "Parked bills.",
+          "text": "Set one aside when someone else walks in. They stay on that phone until you come back."
+        },
+        {
+          "lead": "Weak signal?",
+          "text": "Bills made offline wait on the phone and sync when the connection returns."
+        }
+      ],
+      "minutes": 680
+    },
+    {
+      "slug": "print",
+      "tone": "rose",
+      "flip": true,
+      "kicker": "Remote printing",
+      "title": "Save on the phone. It prints at the counter.",
+      "lead": "The bill goes to the shop's printer, not the phone's. If no till is open, it waits its turn and prints when one is.",
+      "points": [
+        {
+          "lead": "Long bills run on.",
+          "text": "They paginate, and the last page keeps the totals and the stamp together."
+        },
+        {
+          "lead": "CREDIT or PAID, stamped.",
+          "text": "An unpaid bill shows what is due, with a UPI QR to pay it."
+        },
+        {
+          "lead": "A QR on every bill",
+          "text": "that opens the shop's WhatsApp, so the next visit starts with a message."
+        }
+      ],
+      "minutes": 760
+    },
+    {
+      "slug": "link",
+      "tone": "cotton",
+      "flip": false,
+      "kicker": "Shareable bill links",
+      "title": "Or skip the paper. Send the bill as a link.",
+      "lead": "Every bill has its own page. Send it on WhatsApp and the customer sees the itemised bill, stamped, and can download a PDF or message the shop.",
+      "points": [
+        {
+          "lead": "The preview does the talking.",
+          "text": "Bill number, total and the PAID or CREDIT stamp show before the link is opened."
+        },
+        {
+          "lead": "Nothing to install.",
+          "text": "It is a web page, so it opens in whatever browser the customer already has."
+        },
+        {
+          "lead": "Phone bills too.",
+          "text": "Bills saved from the phone can be shared the same way."
+        }
+      ],
+      "minutes": 775
+    },
+    {
+      "slug": "supplier",
+      "tone": "cloth",
+      "flip": true,
+      "kicker": "Supplier bills",
+      "title": "The wholesaler's bill, photographed.",
+      "lead": "Take a photo of the supplier's bill and let the app read it. Nothing is saved until you have looked at every field.",
+      "points": [
+        {
+          "lead": "Photo in, fields out.",
+          "text": "Fields the reader is unsure of say Check, and missing ones say Not found, so you know where to look."
+        },
+        {
+          "lead": "Days left, days overdue.",
+          "text": "Credit is 60 days unless you change it for that supplier. Part payments and cheque details are noted."
+        },
+        {
+          "lead": "Returns, kasar and ITC.",
+          "text": "A ledger statement per supplier, and input tax credit adds up in Reports under Purchases."
+        }
+      ],
+      "minutes": 850
+    },
+    {
+      "slug": "stickers",
+      "tone": "cotton",
+      "flip": false,
+      "kicker": "Price stickers",
+      "title": "Stickers that match the shelf.",
+      "lead": "Design the label once, with the shop name, barcode, QR and a big price. Then queue stickers for whatever came in today.",
+      "points": [
+        {
+          "lead": "Arrange it your way.",
+          "text": "Every part of the label is a layer you can place, resize and restyle."
+        },
+        {
+          "lead": "A queue you can count.",
+          "text": "See how many stickers are going out, product by product, before the printer starts."
+        },
+        {
+          "lead": "Scan it right back.",
+          "text": "The barcode and QR are what the phone scanner reads at the counter."
+        }
+      ],
+      "minutes": 930
+    },
+    {
+      "slug": "dues",
+      "tone": "rani",
+      "flip": true,
+      "kicker": "Credit and dues",
+      "title": "Who owes what, and a polite nudge.",
+      "lead": "Anything not paid at the counter becomes credit against a name and a phone number. By evening you can see the dues and message each customer from the same screen.",
+      "points": [
+        {
+          "lead": "Part payments are fine.",
+          "text": "Each one is noted and the balance carries on."
+        },
+        {
+          "lead": "Gentle, firm or final.",
+          "text": "Pick the wording in Hinglish or English and send it on WhatsApp, one tap at a time."
+        },
+        {
+          "lead": "One account per customer.",
+          "text": "Dues are grouped by phone number, so a customer is never split in two."
+        }
+      ],
+      "minutes": 1065
+    },
+    {
+      "slug": "close",
+      "tone": "night",
+      "flip": false,
+      "kicker": "Close the day",
+      "title": "Count the drawer. Close the day.",
+      "lead": "At 9 PM the phone reminds you. Count the cash, say how much goes home, and the app works out what stays in the shop for tomorrow.",
+      "points": [
+        {
+          "lead": "It tells you the gap",
+          "text": "before you save, and asks once more if you save anyway."
+        },
+        {
+          "lead": "Shop and home, kept apart.",
+          "text": "With pay-outs, a monthly view, and a copy of the day to paste anywhere."
+        },
+        {
+          "lead": "Closed too soon?",
+          "text": "Undo it and count again."
+        }
+      ],
+      "minutes": 1260
+    },
+    {
+      "slug": "gst",
+      "tone": "leaf",
+      "flip": true,
+      "kicker": "Once a quarter",
+      "title": "Quarter-end, without the shoebox.",
+      "lead": "Prices include GST at the rate of each item's HSN code, so the report takes the tax out of every bill and splits it into CGST and SGST. Pick the quarter and the figures are already there.",
+      "points": [
+        {
+          "lead": "Files for the portal or your accountant.",
+          "text": "GSTR-1 JSON, a printable summary and CSVs in the offline tool's layout."
+        },
+        {
+          "lead": "Checks before you file:",
+          "text": "missing bill numbers, items on the default HSN, returns netted off."
+        },
+        {
+          "lead": "Quarterly or monthly,",
+          "text": "regular or composition. The page follows whichever you choose."
+        }
+      ],
+      "timeText": "30 SEP",
+      "periodText": "ત્રિમાસિક"
+    }
+  ],
+  "yours": {
+    "eyebrow": "Make it yours",
+    "title": "Any counter. Your settings.",
+    "body": "It started at a saree shop, but nothing in the till is tied to cloth. What an item is, how it is taxed and what goes on its sticker are all yours to set. Pick a kind of shop and watch the samples change.",
+    "tabs": [
+      {
+        "label": "Item details",
+        "title": "Keep the details your goods have.",
+        "text": "Each item can carry details of your own, such as a brand, a pack size or a warranty. They show on the item form and can be printed on stickers.",
+        "key": "details"
+      },
+      {
+        "label": "GST and HSN",
+        "title": "Your GSTIN, your codes, your rates.",
+        "text": "Enter your own GSTIN and state, keep a list of HSN codes with a rate for each, and pick one per item. A rule can set it from a word in the item's name.",
+        "key": "gst"
+      },
+      {
+        "label": "Stickers",
+        "title": "Design the label your shelf needs.",
+        "text": "Pick the label size, then place the name, price, barcode and QR wherever you like. Add values of your own: a formula, a counter, a date or fixed words.",
+        "key": "stickers"
+      },
+      {
+        "label": "Shop values",
+        "title": "Say who you are once.",
+        "text": "Your name, tagline, phone, WhatsApp link and UPI ID are saved once and used on stickers and in the messages you send customers.",
+        "key": "values"
+      }
+    ],
+    "fixedLead": "Fixed for now:",
+    "fixedText": "the layout of the printed bill, the QR on it and the payment types (cash, UPI and credit). Its address, terms and logo are on their way as settings. If your shop needs something else, tell us what.",
+    "fixedCta": "Tell us what you sell"
+  },
+  "shelf": {
+    "eyebrow": "The rest of the shelf",
+    "title": "Small things that keep a counter moving.",
+    "body": "The day above is the headline. These are the quieter parts that stop you reaching for a notebook.",
+    "swatches": [
+      {
+        "icon": "creditCard",
+        "title": "Split payments",
+        "text": "Cash, UPI and credit on one bill. Whatever is not paid becomes credit against a name and a number.",
+        "fabric": "paisleyIndigo"
+      },
+      {
+        "icon": "qrCode",
+        "title": "UPI QR for the exact due",
+        "text": "A bill with a balance carries a QR for that amount. It works with any UPI app.",
+        "fabric": "paisleyRani"
+      },
+      {
+        "icon": "repeat",
+        "title": "The Counter",
+        "text": "Goods coming back? Take them in as an exchange or a credit note, with a slip to hand over.",
+        "fabric": "paisleyGold"
+      },
+      {
+        "icon": "clipboard",
+        "title": "Stock count",
+        "text": "Count the shelf on the phone. Items showing negative stock are sorted out in one place.",
+        "fabric": "paisleyLeaf"
+      },
+      {
+        "icon": "book",
+        "title": "The books",
+        "text": "Sales, products, stock, customers, purchases, a ledger and a trial balance, all from the same bills.",
+        "fabric": "paisleyRose"
+      },
+      {
+        "icon": "users",
+        "title": "Customer history",
+        "text": "Every bill and payment for a customer on one page, with what they still owe.",
+        "fabric": "starNight"
+      },
+      {
+        "icon": "calendar",
+        "title": "Numbers by financial year",
+        "text": "Bill numbers restart each April. Gaps are pointed out before you file GST.",
+        "fabric": "starLeaf"
+      },
+      {
+        "icon": "phone",
+        "title": "Install it",
+        "text": "Add it to the home screen and it opens full screen, like any other app.",
+        "fabric": "paisleyIndigo"
+      }
+    ]
+  },
+  "wired": {
+    "eyebrow": "What you need",
+    "title": "Your counter, wired.",
+    "body": "No special hardware and nothing to buy from us. This is the whole list, and it is what runs our own counter.",
+    "links": [
+      {
+        "icon": "phone",
+        "title": "A phone",
+        "text": "Any phone with a camera is a scanner and a second till."
+      },
+      {
+        "icon": "monitor",
+        "title": "A computer at the counter",
+        "text": "It runs the till. Printing without a dialog box needs Chrome started in kiosk-printing mode."
+      },
+      {
+        "icon": "printer",
+        "title": "A bill printer",
+        "text": "Anything the computer can print to. Ours is a plain HP LaserJet."
+      },
+      {
+        "icon": "tag",
+        "title": "A label printer",
+        "text": "Only for stickers. Ours is a TSC; set its paper to the label size."
+      }
+    ],
+    "noteLead": "Short of something?",
+    "noteText": "The till and the phone both work without a label printer, and a bill can be sent as a link instead of printed."
+  },
+  "pricing": {
+    "eyebrow": "Price tags",
+    "title": "Two tags. Pick one.",
+    "body": "No hidden fees. Start free and move to Pro when the shop needs it. Ask for a demo and we will help you choose.",
+    "badge": "Most popular",
+    "plans": [
+      {
+        "name": "Basic",
+        "price": "Free",
+        "period": "",
+        "description": "Perfect for getting started",
+        "features": [
+          "Unlimited invoices",
+          "Barcode scanning",
+          "Basic reports",
+          "Mobile dashboard",
+          "PDF sharing"
+        ],
+        "cta": "Ask about Basic",
+        "featured": false
+      },
+      {
+        "name": "Pro",
+        "price": "₹799",
+        "period": "/month",
+        "description": "For growing retail businesses",
+        "features": [
+          "Everything in Basic",
+          "GST-compliant reports",
+          "Cashbook management",
+          "Real-time Discord notifications",
+          "Daily analytics summaries",
+          "Dynamic QR codes",
+          "Customer credit management",
+          "Priority support"
+        ],
+        "cta": "Ask about Pro",
+        "featured": true
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "title": "Asked at the counter.",
+    "body": "Not here? Send a note and a person answers it.",
+    "cta": "Ask us",
+    "items": [
+      {
+        "q": "Does it work on a phone?",
+        "a": "Yes. The app opens on the scanner on a phone, so you can scan, set the price the customer agreed to and save the bill from the shop floor. Add it to the home screen and it opens full screen like any other app."
+      },
+      {
+        "q": "Do I need a barcode scanner?",
+        "a": "No. The phone's camera reads the barcode or QR on your price sticker, and the item appears on the till at the counter."
+      },
+      {
+        "q": "How does printing work?",
+        "a": "Save a bill on any device and the print job goes to the printer at your counter. If no till is open, the bill waits and prints as soon as one is. For printing without a dialog box, the counter computer runs Chrome in kiosk-printing mode."
+      },
+      {
+        "q": "What if customers bargain?",
+        "a": "That is what it was built for. Set the agreed price on each item, or type what the customer settled on for the whole bill and the lines adjust to match. The GST is worked out from that price."
+      },
+      {
+        "q": "Is it ready for GST?",
+        "a": "Prices include GST, and the report takes it out of each bill and splits it into CGST and SGST. You get a GSTR-1 JSON, a printable summary and CSVs, with checks for missing bill numbers and default HSN codes. Regular and composition schemes are both covered. Have your accountant look over the figures before you file."
+      },
+      {
+        "q": "Which payments can I take?",
+        "a": "Cash, UPI and credit, split across one bill however the customer pays. Anything not paid becomes credit against a name and a 10-digit phone number, and part payments can be added later."
+      },
+      {
+        "q": "Where does my data live, and who can see it?",
+        "a": "In a hosted Supabase database, and the till needs a login. The one exception is a bill's share link: anyone who has that link can open that one bill, so send it only to the customer."
+      },
+      {
+        "q": "Is it only for saree shops?",
+        "a": "No. It was built at one, but billing, stock, stickers and reports work for any shop that bills at a counter. Pick another kind of shop at the top of the page to see the till, bill and samples change."
+      },
+      {
+        "q": "What can I customise?",
+        "a": "The details kept on each item (add your own, such as brand, pack size or warranty), your GSTIN, HSN codes and rates, the label size and design of your stickers, and your shop name, tagline, phone and UPI ID. The layout of the printed bill, the QR on it and the payment types (cash, UPI and credit) are fixed for now; its address, terms and logo are on their way as settings."
+      },
+      {
+        "q": "Does it only suit shops that bargain?",
+        "a": "No. The agreed price starts at the tag price, so a fixed-price shop can leave it alone and bill as normal."
+      },
+      {
+        "q": "Can I try it before I ask?",
+        "a": "Yes. The till near the top of this page uses the same maths as the real one. For the full app, ask for a demo and we will show you around."
+      }
+    ]
+  },
+  "footer": {
+    "badge": "દુકાન ખુલ્લી છે",
+    "title": "The shop is open. Come in.",
+    "body": "See the till on your own counter. Ask for a demo and we will walk you through a day, or open the till and look around.",
+    "primaryCta": "Ask for a demo",
+    "secondaryCta": "Open the till",
+    "tagline": "VH Billing Suite, a point of sale for any counter, built at a saree shop in Surat.",
+    "copyright": "© 2026 VH Billing Suite"
+  }
+}
