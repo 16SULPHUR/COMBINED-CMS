@@ -53,6 +53,14 @@ export const text = (name: string, defaultValue?: string, description?: string):
   ...(description ? { admin: { description } } : {}),
 })
 
+export const group = (name: string, label: string, fields: Field[], description?: string): Field => ({
+  name,
+  label,
+  type: 'group',
+  fields,
+  ...(description ? { admin: { description } } : {}),
+})
+
 export const toggle = (name: string, label: string, defaultValue = true, description?: string): CheckboxField => ({
   name,
   type: 'checkbox',

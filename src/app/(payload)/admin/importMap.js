@@ -1,4 +1,5 @@
 import { MainLineRow as MainLineRow_86eddfe5b8594001935751683cf101f6 } from '../../../projects/portfolio/admin/RowLabels'
+import { NamedRow as NamedRow_86eddfe5b8594001935751683cf101f6 } from '../../../projects/portfolio/admin/RowLabels'
 import { Pulse as Pulse_9fc4b468f7ad095407c6e0b9ea560ba8 } from '../../../projects/portfolio/admin/Pulse'
 import { NavLinks as NavLinks_a9df6008d0f89bd574ec862fc0f6ccfc } from '../../../projects/portfolio/admin/NavLinks'
 import { Insights as Insights_54e79f4f4c6092e67e0f3da8556785a0 } from '../../../projects/portfolio/admin/Insights'
@@ -9,6 +10,7 @@ import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc056
 /** @type import('payload').ImportMap */
 export const importMap = {
   "/projects/portfolio/admin/RowLabels#MainLineRow": MainLineRow_86eddfe5b8594001935751683cf101f6,
+  "/projects/portfolio/admin/RowLabels#NamedRow": NamedRow_86eddfe5b8594001935751683cf101f6,
   "/projects/portfolio/admin/Pulse#Pulse": Pulse_9fc4b468f7ad095407c6e0b9ea560ba8,
   "/projects/portfolio/admin/NavLinks#NavLinks": NavLinks_a9df6008d0f89bd574ec862fc0f6ccfc,
   "/projects/portfolio/admin/Insights#Insights": Insights_54e79f4f4c6092e67e0f3da8556785a0,

@@ -1,14 +1,6 @@
 import type { ArrayField, Field, GlobalConfig } from 'payload'
 
-import { globalVersions, livePreview, publicRead, text, toggle } from '../fields'
-
-const group = (name: string, label: string, fields: Field[], description?: string): Field => ({
-  name,
-  label,
-  type: 'group',
-  fields,
-  ...(description ? { admin: { description } } : {}),
-})
+import { globalVersions, group, livePreview, publicRead, text, toggle } from '../fields'
 
 const sign = (name: string, label: string, title: string, sub: string, dock: string): Field =>
   group(name, label, [

@@ -110,6 +110,7 @@ export interface Config {
   globals: {
     'suite-copy': SuiteCopy;
     'portfolio-site': PortfolioSite;
+    'portfolio-game': PortfolioGame;
     'portfolio-profile': PortfolioProfile;
     'portfolio-resume': PortfolioResume;
     'portfolio-education': PortfolioEducation;
@@ -118,6 +119,7 @@ export interface Config {
   globalsSelect: {
     'suite-copy': SuiteCopySelect<false> | SuiteCopySelect<true>;
     'portfolio-site': PortfolioSiteSelect<false> | PortfolioSiteSelect<true>;
+    'portfolio-game': PortfolioGameSelect<false> | PortfolioGameSelect<true>;
     'portfolio-profile': PortfolioProfileSelect<false> | PortfolioProfileSelect<true>;
     'portfolio-resume': PortfolioResumeSelect<false> | PortfolioResumeSelect<true>;
     'portfolio-education': PortfolioEducationSelect<false> | PortfolioEducationSelect<true>;
@@ -1274,6 +1276,242 @@ export interface PortfolioSite {
   createdAt?: string | null;
 }
 /**
+ * The text of the island game: title screen, creatures, trainers, the health check, battle lines and bugs. Words in braces such as {first}, {moss} or {name} are filled in by the game. Until this is saved once, the island uses its own built-in text.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-game".
+ */
+export interface PortfolioGame {
+  id: number;
+  title?: {
+    subtitle?: string | null;
+    tagline?: string | null;
+    blurb?: string | null;
+  };
+  moss?: {
+    name?: string | null;
+    /**
+     * Type keys
+     */
+    types?: string[] | null;
+  };
+  exp?: {
+    friend?: number | null;
+    fix?: number | null;
+  };
+  /**
+   * Each row is one of the island’s creatures. Removing a row puts back the island’s own text for it.
+   */
+  species?:
+    | {
+        /**
+         * Used by trainers and bugs
+         */
+        key?: string | null;
+        no?: number | null;
+        name?: string | null;
+        kind?: string | null;
+        /**
+         * Type keys, e.g. data, net
+         */
+        types?: string[] | null;
+        /**
+         * What it does when you befriend it
+         */
+        happy?: string | null;
+        entry?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Move and creature types. Removing a row puts back the island’s own label and colour.
+   */
+  types?:
+    | {
+        /**
+         * Used by creatures and answers
+         */
+        key?: string | null;
+        label?: string | null;
+        /**
+         * Hex colour, e.g. #4c86d0
+         */
+        color?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Each row is one of the island’s trainers. Their place on the map stays in code.
+   */
+  trainers?:
+    | {
+        /**
+         * Trainer
+         */
+        key?: string | null;
+        name?: string | null;
+        title?: string | null;
+        exp?: number | null;
+        off?: boolean | null;
+        mon: {
+          /**
+           * Creature key
+           */
+          species: string;
+          /**
+           * Nickname
+           */
+          name?: string | null;
+          level: number;
+        };
+        intro?:
+          | {
+              line: string;
+              id?: string | null;
+            }[]
+          | null;
+        win?: string | null;
+        lose?: string | null;
+        again?:
+          | {
+              line: string;
+              id?: string | null;
+            }[]
+          | null;
+        rounds?:
+          | {
+              move?: string | null;
+              /**
+               * Type key, e.g. data
+               */
+              type?: string | null;
+              ready?: string | null;
+              hit?: string | null;
+              hint?: string | null;
+              options?:
+                | {
+                    label?: string | null;
+                    /**
+                     * Type key, e.g. data
+                     */
+                    type?: string | null;
+                    ok?: boolean | null;
+                    text?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  nurse?: {
+    name?: string | null;
+    greet?:
+      | {
+          line: string;
+          id?: string | null;
+        }[]
+      | null;
+    healed?: string | null;
+    full?: string | null;
+    wake?:
+      | {
+          line: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Lines shown during encounters, battles and the handshake.
+   */
+  strings?: {
+    meet?: string | null;
+    meetBug?: string | null;
+    challenge?: string | null;
+    sendOut?: string | null;
+    mossIn?: string | null;
+    prompt?: string | null;
+    packetPrompt?: string | null;
+    inspect?: string | null;
+    ping?: string | null;
+    pickFix?: string | null;
+    pickCounter?: string | null;
+    tries?: string | null;
+    rootCause?: string | null;
+    noEffect?: string | null;
+    hitsBack?: string | null;
+    lands?: string | null;
+    patched?: string | null;
+    outOfSteam?: string | null;
+    mossDown?: string | null;
+    exp?: string | null;
+    levelUp?: string | null;
+    run?: string | null;
+    backOff?: string | null;
+    noRun?: string | null;
+    crewNone?: string | null;
+    crewAssist?: string | null;
+    crewNothing?: string | null;
+    crewTired?: string | null;
+    crewGuard?: string | null;
+    synFirstAck?: string | null;
+    synFirstFin?: string | null;
+    synFirstRst?: string | null;
+    syn?: string | null;
+    lost?: string | null;
+    retry?: string | null;
+    synAck?: string | null;
+    ackSyn?: string | null;
+    ackRst?: string | null;
+    ackFin?: string | null;
+    ack?: string | null;
+    connected?: string | null;
+  };
+  /**
+   * Bugs are written from your portfolio content. Add a row to change one; empty fields keep the island’s text.
+   */
+  bugs?:
+    | {
+        /**
+         * n-plus-one, slow-query, double-charge, webhook-storm, prompt-injection
+         */
+        key: string;
+        name?: string | null;
+        /**
+         * Its attack
+         */
+        attack?: string | null;
+        /**
+         * Type key, e.g. data
+         */
+        type?: string | null;
+        level?: number | null;
+        off?: boolean | null;
+        intro?: string | null;
+        hint?: string | null;
+        win?: string | null;
+        lesson?: string | null;
+        moves?:
+          | {
+              label?: string | null;
+              /**
+               * Type key, e.g. data
+               */
+              type?: string | null;
+              ok?: boolean | null;
+              text?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio-profile".
  */
@@ -1811,6 +2049,192 @@ export interface PortfolioSiteSelect<T extends boolean = true> {
         retention?: T;
         origins?: T;
         legacyWorker?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-game_select".
+ */
+export interface PortfolioGameSelect<T extends boolean = true> {
+  title?:
+    | T
+    | {
+        subtitle?: T;
+        tagline?: T;
+        blurb?: T;
+      };
+  moss?:
+    | T
+    | {
+        name?: T;
+        types?: T;
+      };
+  exp?:
+    | T
+    | {
+        friend?: T;
+        fix?: T;
+      };
+  species?:
+    | T
+    | {
+        key?: T;
+        no?: T;
+        name?: T;
+        kind?: T;
+        types?: T;
+        happy?: T;
+        entry?: T;
+        id?: T;
+      };
+  types?:
+    | T
+    | {
+        key?: T;
+        label?: T;
+        color?: T;
+        id?: T;
+      };
+  trainers?:
+    | T
+    | {
+        key?: T;
+        name?: T;
+        title?: T;
+        exp?: T;
+        off?: T;
+        mon?:
+          | T
+          | {
+              species?: T;
+              name?: T;
+              level?: T;
+            };
+        intro?:
+          | T
+          | {
+              line?: T;
+              id?: T;
+            };
+        win?: T;
+        lose?: T;
+        again?:
+          | T
+          | {
+              line?: T;
+              id?: T;
+            };
+        rounds?:
+          | T
+          | {
+              move?: T;
+              type?: T;
+              ready?: T;
+              hit?: T;
+              hint?: T;
+              options?:
+                | T
+                | {
+                    label?: T;
+                    type?: T;
+                    ok?: T;
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        id?: T;
+      };
+  nurse?:
+    | T
+    | {
+        name?: T;
+        greet?:
+          | T
+          | {
+              line?: T;
+              id?: T;
+            };
+        healed?: T;
+        full?: T;
+        wake?:
+          | T
+          | {
+              line?: T;
+              id?: T;
+            };
+      };
+  strings?:
+    | T
+    | {
+        meet?: T;
+        meetBug?: T;
+        challenge?: T;
+        sendOut?: T;
+        mossIn?: T;
+        prompt?: T;
+        packetPrompt?: T;
+        inspect?: T;
+        ping?: T;
+        pickFix?: T;
+        pickCounter?: T;
+        tries?: T;
+        rootCause?: T;
+        noEffect?: T;
+        hitsBack?: T;
+        lands?: T;
+        patched?: T;
+        outOfSteam?: T;
+        mossDown?: T;
+        exp?: T;
+        levelUp?: T;
+        run?: T;
+        backOff?: T;
+        noRun?: T;
+        crewNone?: T;
+        crewAssist?: T;
+        crewNothing?: T;
+        crewTired?: T;
+        crewGuard?: T;
+        synFirstAck?: T;
+        synFirstFin?: T;
+        synFirstRst?: T;
+        syn?: T;
+        lost?: T;
+        retry?: T;
+        synAck?: T;
+        ackSyn?: T;
+        ackRst?: T;
+        ackFin?: T;
+        ack?: T;
+        connected?: T;
+      };
+  bugs?:
+    | T
+    | {
+        key?: T;
+        name?: T;
+        attack?: T;
+        type?: T;
+        level?: T;
+        off?: T;
+        intro?: T;
+        hint?: T;
+        win?: T;
+        lesson?: T;
+        moves?:
+          | T
+          | {
+              label?: T;
+              type?: T;
+              ok?: T;
+              text?: T;
+              id?: T;
+            };
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;

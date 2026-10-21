@@ -52,6 +52,8 @@ Re-running updates existing entries (matched by slug, company, name or href) ins
 
 **Site settings** (`portfolio-site`) holds everything else a visitor sees: the name tag, which cards hang on the main line and in what order, card text, the resume popup's buttons and PDF, music, sky and clock, the Cards/Island switch and its postcard, a notice banner, the 404 page, SEO and tracking. The site falls back to its own defaults for anything left empty.
 
+**Island game** (`portfolio-game`) holds the text of the island game at `/island`: title screen, creatures, trainers and their battles, the health check, battle lines and changes to bugs. Its fields start with the island's own text (`globals/gameDefaults.ts`, generated from the portfolio's `src/components/localhost/content.ts`), and the island keeps its built-in text until the global is saved once. Map positions and creature keys stay in the portfolio's code.
+
 Every portfolio entry has a **Hide on the site** toggle (hidden entries stay in the admin but leave the public API), keeps its last 50 versions, and opens a live preview of the portfolio while you edit. Set `PORTFOLIO_URL` to preview another copy of the site, e.g. `http://localhost:5173`.
 
 ## Portfolio monitoring

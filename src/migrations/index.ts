@@ -3,6 +3,7 @@ import * as migration_20261012_195032_media_storage from './20261012_195032_medi
 import * as migration_20261012_201104_portfolio_content from './20261012_201104_portfolio_content';
 import * as migration_20261013_165638_suite_content from './20261013_165638_suite_content';
 import * as migration_20261020_222701_portfolio_controls from './20261020_222701_portfolio_controls';
+import * as migration_20261021_195436_portfolio_game from './20261021_195436_portfolio_game';
 
 export const migrations = [
   {
@@ -28,6 +29,11 @@ export const migrations = [
   {
     up: migration_20261020_222701_portfolio_controls.up,
     down: migration_20261020_222701_portfolio_controls.down,
-    name: '20261020_222701_portfolio_controls'
+    name: '20261020_222701_portfolio_controls',
+  },
+  {
+    up: migration_20261021_195436_portfolio_game.up,
+    down: migration_20261021_195436_portfolio_game.down,
+    name: '20261021_195436_portfolio_game'
   },
 ];

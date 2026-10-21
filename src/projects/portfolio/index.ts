@@ -6,6 +6,7 @@ import { Roles } from './collections/Roles'
 import { Skills } from './collections/Skills'
 import { Contact } from './globals/Contact'
 import { Education } from './globals/Education'
+import { Game } from './globals/Game'
 import { Profile } from './globals/Profile'
 import { Resume } from './globals/Resume'
 import { Site } from './globals/Site'
@@ -18,7 +19,7 @@ export const portfolio = defineProject({
   slug: 'portfolio',
   label: 'Portfolio',
   collections: [Projects, Roles, Internships, Skills, Articles, Visits, Events, Errors],
-  globals: [Site, Profile, Resume, Education, Contact],
+  globals: [Site, Game, Profile, Resume, Education, Contact],
   endpoints,
   admin: {
     beforeDashboard: [`${admin}/Pulse#Pulse`],
