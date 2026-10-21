@@ -1,6 +1,36 @@
-import type { Field } from 'payload'
+import type { Access, CheckboxField, CollectionAdminOptions, Field, TextField } from 'payload'
+
+type LivePreviewConfig = NonNullable<CollectionAdminOptions['livePreview']>
 
 export const publicRead = { read: () => true }
+
+export const isAdmin: Access = ({ req }) => Boolean(req.user)
+
+// Hidden entries stay readable in the admin but are left out of the public API.
+export const listedRead = { read: (({ req }) => (req.user ? true : { hidden: { not_equals: true } })) as Access }
+
+export const hidden: CheckboxField = {
+  name: 'hidden',
+  type: 'checkbox',
+  label: 'Hide on the site',
+  defaultValue: false,
+  index: true,
+  admin: { position: 'sidebar', description: 'Keeps it here but takes it off the portfolio.' },
+}
+
+export const collectionVersions = { maxPerDoc: 50 }
+export const globalVersions = { max: 50 }
+
+export const portfolioUrl = () => (process.env.PORTFOLIO_URL || 'https://ankit.varietyheaven.in').replace(/\/+$/, '')
+
+export const livePreview = (path = '/'): LivePreviewConfig => ({
+  url: ({ collectionConfig, globalConfig }) =>
+    `${portfolioUrl()}${path}?cms-preview=${collectionConfig?.slug ?? globalConfig?.slug ?? ''}`,
+  breakpoints: [
+    { label: 'Phone', name: 'phone', width: 390, height: 844 },
+    { label: 'Laptop', name: 'laptop', width: 1440, height: 900 },
+  ],
+})
 
 export const linkFields: Field[] = [
   { name: 'label', type: 'text', required: true },
@@ -14,6 +44,21 @@ export const tags = (name: string, required = false): Field => ({
   type: 'text',
   hasMany: true,
   required,
+})
+
+export const text = (name: string, defaultValue?: string, description?: string): TextField => ({
+  name,
+  type: 'text',
+  defaultValue,
+  ...(description ? { admin: { description } } : {}),
+})
+
+export const toggle = (name: string, label: string, defaultValue = true, description?: string): CheckboxField => ({
+  name,
+  type: 'checkbox',
+  label,
+  defaultValue,
+  ...(description ? { admin: { description } } : {}),
 })
 
 export const pastel: Field = {

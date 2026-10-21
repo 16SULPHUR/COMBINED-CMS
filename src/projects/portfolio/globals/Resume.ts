@@ -1,6 +1,6 @@
 import type { Field, GlobalConfig } from 'payload'
 
-import { linkFields, links, publicRead, tags } from '../fields'
+import { globalVersions, linkFields, links, livePreview, publicRead, tags } from '../fields'
 
 const link: Field = { name: 'link', type: 'group', fields: linkFields.map((f) => ({ ...f, required: false })) }
 
@@ -15,6 +15,8 @@ export const Resume: GlobalConfig = {
   slug: 'portfolio-resume',
   label: 'Resume',
   access: publicRead,
+  versions: globalVersions,
+  admin: { livePreview: livePreview('/resume') },
   fields: [
     { name: 'name', type: 'text', required: true },
     { name: 'role', type: 'text', required: true },
