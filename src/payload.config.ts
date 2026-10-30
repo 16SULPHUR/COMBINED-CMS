@@ -8,7 +8,7 @@ import sharp from 'sharp'
 
 import { Media } from './collections/shared/Media'
 import { Users } from './collections/shared/Users'
-import { projectCollections, projectGlobals } from './projects'
+import { projectAdmin, projectCollections, projectEndpoints, projectGlobals } from './projects'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,9 +34,11 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: projectAdmin,
   },
   collections: [Users, Media, ...projectCollections],
   globals: projectGlobals,
+  endpoints: projectEndpoints,
   cors: allowedOrigins,
   csrf,
   editor: lexicalEditor(),

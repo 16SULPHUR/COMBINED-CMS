@@ -74,12 +74,19 @@ export interface Config {
     'portfolio-internships': PortfolioInternship;
     'portfolio-skills': PortfolioSkill;
     'portfolio-articles': PortfolioArticle;
+    'portfolio-visits': PortfolioVisit;
+    'portfolio-events': PortfolioEvent;
+    'portfolio-errors': PortfolioError;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  collectionsJoins: {};
+  collectionsJoins: {
+    'portfolio-visits': {
+      events: 'portfolio-events';
+    };
+  };
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
@@ -88,6 +95,9 @@ export interface Config {
     'portfolio-internships': PortfolioInternshipsSelect<false> | PortfolioInternshipsSelect<true>;
     'portfolio-skills': PortfolioSkillsSelect<false> | PortfolioSkillsSelect<true>;
     'portfolio-articles': PortfolioArticlesSelect<false> | PortfolioArticlesSelect<true>;
+    'portfolio-visits': PortfolioVisitsSelect<false> | PortfolioVisitsSelect<true>;
+    'portfolio-events': PortfolioEventsSelect<false> | PortfolioEventsSelect<true>;
+    'portfolio-errors': PortfolioErrorsSelect<false> | PortfolioErrorsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -99,6 +109,8 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'suite-copy': SuiteCopy;
+    'portfolio-site': PortfolioSite;
+    'portfolio-game': PortfolioGame;
     'portfolio-profile': PortfolioProfile;
     'portfolio-resume': PortfolioResume;
     'portfolio-education': PortfolioEducation;
@@ -106,6 +118,8 @@ export interface Config {
   };
   globalsSelect: {
     'suite-copy': SuiteCopySelect<false> | SuiteCopySelect<true>;
+    'portfolio-site': PortfolioSiteSelect<false> | PortfolioSiteSelect<true>;
+    'portfolio-game': PortfolioGameSelect<false> | PortfolioGameSelect<true>;
     'portfolio-profile': PortfolioProfileSelect<false> | PortfolioProfileSelect<true>;
     'portfolio-resume': PortfolioResumeSelect<false> | PortfolioResumeSelect<true>;
     'portfolio-education': PortfolioEducationSelect<false> | PortfolioEducationSelect<true>;
@@ -268,6 +282,10 @@ export interface PortfolioProject {
       }[]
     | null;
   note?: string | null;
+  /**
+   * Keeps it here but takes it off the portfolio.
+   */
+  hidden?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -285,6 +303,10 @@ export interface PortfolioRole {
   points: string[];
   tags?: string[] | null;
   note?: string | null;
+  /**
+   * Keeps it here but takes it off the portfolio.
+   */
+  hidden?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -299,6 +321,10 @@ export interface PortfolioInternship {
   title: string;
   period: string;
   points: string[];
+  /**
+   * Keeps it here but takes it off the portfolio.
+   */
+  hidden?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -315,6 +341,10 @@ export interface PortfolioSkill {
    */
   tone: string;
   items: string[];
+  /**
+   * Keeps it here but takes it off the portfolio.
+   */
+  hidden?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -332,6 +362,104 @@ export interface PortfolioArticle {
   excerpt: string;
   topics?: string[] | null;
   href: string;
+  /**
+   * Keeps it here but takes it off the portfolio.
+   */
+  hidden?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * One row per visit to the portfolio. What each visitor opened is listed inside the visit.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-visits".
+ */
+export interface PortfolioVisit {
+  id: number;
+  label?: string | null;
+  sid: string;
+  /**
+   * Anonymous id that changes every day. No IP address is stored.
+   */
+  visitor?: string | null;
+  startedAt?: string | null;
+  lastSeenAt?: string | null;
+  /**
+   * Seconds on the page
+   */
+  duration?: number | null;
+  views?: number | null;
+  actions?: number | null;
+  /**
+   * Same browser and network visited earlier that day
+   */
+  returning?: boolean | null;
+  landing?: string | null;
+  source?: string | null;
+  referrer?: string | null;
+  country?: string | null;
+  region?: string | null;
+  city?: string | null;
+  device?: string | null;
+  browser?: string | null;
+  os?: string | null;
+  screen?: string | null;
+  language?: string | null;
+  timezone?: string | null;
+  style?: string | null;
+  events?: {
+    docs?: (number | PortfolioEvent)[];
+    hasNextPage?: boolean;
+    totalDocs?: number;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Everything visitors did: pages, opened cards, links, resume, style switches, island game moves and page speed.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-events".
+ */
+export interface PortfolioEvent {
+  id: number;
+  visit?: (number | null) | PortfolioVisit;
+  type: string;
+  target?: string | null;
+  label?: string | null;
+  path?: string | null;
+  value?: number | null;
+  meta?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Errors visitors hit on the portfolio, grouped by message. Tick Resolved once fixed; it reopens if it happens again.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-errors".
+ */
+export interface PortfolioError {
+  id: number;
+  fingerprint: string;
+  message: string;
+  kind?: string | null;
+  count?: number | null;
+  firstSeen?: string | null;
+  lastSeen?: string | null;
+  path?: string | null;
+  browser?: string | null;
+  stack?: string | null;
+  resolved?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -386,6 +514,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'portfolio-articles';
         value: number | PortfolioArticle;
+      } | null)
+    | ({
+        relationTo: 'portfolio-visits';
+        value: number | PortfolioVisit;
+      } | null)
+    | ({
+        relationTo: 'portfolio-events';
+        value: number | PortfolioEvent;
+      } | null)
+    | ({
+        relationTo: 'portfolio-errors';
+        value: number | PortfolioError;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -547,6 +687,7 @@ export interface PortfolioProjectsSelect<T extends boolean = true> {
         id?: T;
       };
   note?: T;
+  hidden?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -563,6 +704,7 @@ export interface PortfolioRolesSelect<T extends boolean = true> {
   points?: T;
   tags?: T;
   note?: T;
+  hidden?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -576,6 +718,7 @@ export interface PortfolioInternshipsSelect<T extends boolean = true> {
   title?: T;
   period?: T;
   points?: T;
+  hidden?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -588,6 +731,7 @@ export interface PortfolioSkillsSelect<T extends boolean = true> {
   name?: T;
   tone?: T;
   items?: T;
+  hidden?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -604,6 +748,71 @@ export interface PortfolioArticlesSelect<T extends boolean = true> {
   excerpt?: T;
   topics?: T;
   href?: T;
+  hidden?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-visits_select".
+ */
+export interface PortfolioVisitsSelect<T extends boolean = true> {
+  label?: T;
+  sid?: T;
+  visitor?: T;
+  startedAt?: T;
+  lastSeenAt?: T;
+  duration?: T;
+  views?: T;
+  actions?: T;
+  returning?: T;
+  landing?: T;
+  source?: T;
+  referrer?: T;
+  country?: T;
+  region?: T;
+  city?: T;
+  device?: T;
+  browser?: T;
+  os?: T;
+  screen?: T;
+  language?: T;
+  timezone?: T;
+  style?: T;
+  events?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-events_select".
+ */
+export interface PortfolioEventsSelect<T extends boolean = true> {
+  visit?: T;
+  type?: T;
+  target?: T;
+  label?: T;
+  path?: T;
+  value?: T;
+  meta?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-errors_select".
+ */
+export interface PortfolioErrorsSelect<T extends boolean = true> {
+  fingerprint?: T;
+  message?: T;
+  kind?: T;
+  count?: T;
+  firstSeen?: T;
+  lastSeen?: T;
+  path?: T;
+  browser?: T;
+  stack?: T;
+  resolved?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -831,6 +1040,474 @@ export interface SuiteCopy {
     tagline: string;
     copyright: string;
   };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Everything on the site that is not a project, role or resume entry: labels, card order, sound, sky, the style switch and tracking.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-site".
+ */
+export interface PortfolioSite {
+  id: number;
+  brand?: {
+    name?: string | null;
+    /**
+     * Shown on the main line
+     */
+    main?: string | null;
+    /**
+     * Shown on the projects line
+     */
+    projects?: string | null;
+  };
+  /**
+   * The cards on the main line, left to right. Drag to reorder, untick to take a card down.
+   */
+  mainLine?:
+    | {
+        card: 'intro' | 'work' | 'internships' | 'projects' | 'stack' | 'writing' | 'education' | 'contact';
+        /**
+         * Name in the bottom bar, empty to leave it out
+         */
+        label?: string | null;
+        show?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  projectsLine?: {
+    work?: {
+      title?: string | null;
+      sub?: string | null;
+      /**
+       * Name in the bottom bar
+       */
+      dock?: string | null;
+    };
+    side?: {
+      title?: string | null;
+      sub?: string | null;
+      /**
+       * Name in the bottom bar
+       */
+      dock?: string | null;
+    };
+    back?: {
+      title?: string | null;
+      sub?: string | null;
+      /**
+       * Name in the bottom bar
+       */
+      dock?: string | null;
+    };
+  };
+  hint?: {
+    mouse?: string | null;
+    touch?: string | null;
+  };
+  cards?: {
+    bundle?: {
+      title?: string | null;
+      /**
+       * {n} becomes the number of projects
+       */
+      count?: string | null;
+      cta?: string | null;
+    };
+    stack?: {
+      title?: string | null;
+      /**
+       * Letters on the laptop lid
+       */
+      logo?: string | null;
+      stickers?:
+        | {
+            text: string;
+            /**
+             * Degrees
+             */
+            tilt?: number | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    internships?: {
+      title?: string | null;
+      year?: string | null;
+    };
+    writing?: {
+      byline?: string | null;
+      cta?: string | null;
+    };
+    contact?: {
+      to?: string | null;
+      from?: string | null;
+      stamp?: string | null;
+      copy?: string | null;
+      copied?: string | null;
+      copyFailed?: string | null;
+    };
+    preview?: {
+      back?: string | null;
+    };
+  };
+  resume?: {
+    share?: boolean | null;
+    download?: boolean | null;
+    shareLabel?: string | null;
+    copiedLabel?: string | null;
+    downloadLabel?: string | null;
+    downloadHint?: string | null;
+    /**
+     * Optional. When set, Download PDF opens this file instead of the print dialog.
+     */
+    pdf?: (number | null) | Media;
+    headings?: {
+      skills?: string | null;
+      experience?: string | null;
+      projects?: string | null;
+      education?: string | null;
+    };
+  };
+  music?: {
+    enabled?: boolean | null;
+    muted?: boolean | null;
+    clicks?: boolean | null;
+    /**
+     * Starting volume, 0 to 100
+     */
+    volume?: number | null;
+  };
+  sky?: {
+    clock?: boolean | null;
+    mode?: ('live' | 'fixed') | null;
+    /**
+     * Used when the time is fixed, e.g. 17.5 is 5:30 PM
+     */
+    hour?: number | null;
+    title?: string | null;
+    live?: string | null;
+    presets?:
+      | {
+          name: string;
+          hour: number;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  styles?: {
+    default?: ('cards' | 'island') | null;
+    transition?: ('postcard' | 'fade' | 'none') | null;
+    switch?: boolean | null;
+    remember?: boolean | null;
+    labels?: {
+      cards?: string | null;
+      island?: string | null;
+    };
+    /**
+     * The card that flips over during the postcard transition.
+     */
+    postcard?: {
+      island?: {
+        title?: string | null;
+        body?: string | null;
+        /**
+         * Signed by
+         */
+        sign?: string | null;
+        to?: string[] | null;
+      };
+      cards?: {
+        title?: string | null;
+        body?: string | null;
+        /**
+         * Signed by
+         */
+        sign?: string | null;
+        to?: string[] | null;
+      };
+    };
+  };
+  banner?: {
+    show?: boolean | null;
+    /**
+     * e.g. "New post: Stripe SEPA payments in Medusa v2"
+     */
+    text?: string | null;
+    linkLabel?: string | null;
+    linkHref?: string | null;
+    /**
+     * Optional. Hides itself after this day.
+     */
+    until?: string | null;
+  };
+  notFound?: {
+    title?: string | null;
+    text?: string | null;
+    link?: string | null;
+  };
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * 1200 × 630
+     */
+    image?: (number | null) | Media;
+  };
+  tracking?: {
+    enabled?: boolean | null;
+    clicks?: boolean | null;
+    game?: boolean | null;
+    vitals?: boolean | null;
+    errors?: boolean | null;
+    dnt?: boolean | null;
+    retention?: number | null;
+    /**
+     * Origins, e.g. https://ankit.ninja. Anything else is ignored.
+     */
+    origins?: string[] | null;
+    /**
+     * portfolio-worker.varietyheaven.in, with its own dashboard and daily Discord summary
+     */
+    legacyWorker?: boolean | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * The text of the island game: title screen, creatures, trainers, the health check, battle lines and bugs. Words in braces such as {first}, {moss} or {name} are filled in by the game. Until this is saved once, the island uses its own built-in text.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-game".
+ */
+export interface PortfolioGame {
+  id: number;
+  title?: {
+    subtitle?: string | null;
+    tagline?: string | null;
+    blurb?: string | null;
+  };
+  moss?: {
+    name?: string | null;
+    /**
+     * Type keys
+     */
+    types?: string[] | null;
+  };
+  exp?: {
+    friend?: number | null;
+    fix?: number | null;
+  };
+  /**
+   * Each row is one of the island’s creatures. Removing a row puts back the island’s own text for it.
+   */
+  species?:
+    | {
+        /**
+         * Used by trainers and bugs
+         */
+        key?: string | null;
+        no?: number | null;
+        name?: string | null;
+        kind?: string | null;
+        /**
+         * Type keys, e.g. data, net
+         */
+        types?: string[] | null;
+        /**
+         * What it does when you befriend it
+         */
+        happy?: string | null;
+        entry?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Move and creature types. Removing a row puts back the island’s own label and colour.
+   */
+  types?:
+    | {
+        /**
+         * Used by creatures and answers
+         */
+        key?: string | null;
+        label?: string | null;
+        /**
+         * Hex colour, e.g. #4c86d0
+         */
+        color?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Each row is one of the island’s trainers. Their place on the map stays in code.
+   */
+  trainers?:
+    | {
+        /**
+         * Trainer
+         */
+        key?: string | null;
+        name?: string | null;
+        title?: string | null;
+        exp?: number | null;
+        off?: boolean | null;
+        mon: {
+          /**
+           * Creature key
+           */
+          species: string;
+          /**
+           * Nickname
+           */
+          name?: string | null;
+          level: number;
+        };
+        intro?:
+          | {
+              line: string;
+              id?: string | null;
+            }[]
+          | null;
+        win?: string | null;
+        lose?: string | null;
+        again?:
+          | {
+              line: string;
+              id?: string | null;
+            }[]
+          | null;
+        rounds?:
+          | {
+              move?: string | null;
+              /**
+               * Type key, e.g. data
+               */
+              type?: string | null;
+              ready?: string | null;
+              hit?: string | null;
+              hint?: string | null;
+              options?:
+                | {
+                    label?: string | null;
+                    /**
+                     * Type key, e.g. data
+                     */
+                    type?: string | null;
+                    ok?: boolean | null;
+                    text?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  nurse?: {
+    name?: string | null;
+    greet?:
+      | {
+          line: string;
+          id?: string | null;
+        }[]
+      | null;
+    healed?: string | null;
+    full?: string | null;
+    wake?:
+      | {
+          line: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Lines shown during encounters, battles and the handshake.
+   */
+  strings?: {
+    meet?: string | null;
+    meetBug?: string | null;
+    challenge?: string | null;
+    sendOut?: string | null;
+    mossIn?: string | null;
+    prompt?: string | null;
+    packetPrompt?: string | null;
+    inspect?: string | null;
+    ping?: string | null;
+    pickFix?: string | null;
+    pickCounter?: string | null;
+    tries?: string | null;
+    rootCause?: string | null;
+    noEffect?: string | null;
+    hitsBack?: string | null;
+    lands?: string | null;
+    patched?: string | null;
+    outOfSteam?: string | null;
+    mossDown?: string | null;
+    exp?: string | null;
+    levelUp?: string | null;
+    run?: string | null;
+    backOff?: string | null;
+    noRun?: string | null;
+    crewNone?: string | null;
+    crewAssist?: string | null;
+    crewNothing?: string | null;
+    crewTired?: string | null;
+    crewGuard?: string | null;
+    synFirstAck?: string | null;
+    synFirstFin?: string | null;
+    synFirstRst?: string | null;
+    syn?: string | null;
+    lost?: string | null;
+    retry?: string | null;
+    synAck?: string | null;
+    ackSyn?: string | null;
+    ackRst?: string | null;
+    ackFin?: string | null;
+    ack?: string | null;
+    connected?: string | null;
+  };
+  /**
+   * Bugs are written from your portfolio content. Add a row to change one; empty fields keep the island’s text.
+   */
+  bugs?:
+    | {
+        /**
+         * n-plus-one, slow-query, double-charge, webhook-storm, prompt-injection
+         */
+        key: string;
+        name?: string | null;
+        /**
+         * Its attack
+         */
+        attack?: string | null;
+        /**
+         * Type key, e.g. data
+         */
+        type?: string | null;
+        level?: number | null;
+        off?: boolean | null;
+        intro?: string | null;
+        hint?: string | null;
+        win?: string | null;
+        lesson?: string | null;
+        moves?:
+          | {
+              label?: string | null;
+              /**
+               * Type key, e.g. data
+               */
+              type?: string | null;
+              ok?: boolean | null;
+              text?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1153,6 +1830,411 @@ export interface SuiteCopySelect<T extends boolean = true> {
         secondaryCta?: T;
         tagline?: T;
         copyright?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-site_select".
+ */
+export interface PortfolioSiteSelect<T extends boolean = true> {
+  brand?:
+    | T
+    | {
+        name?: T;
+        main?: T;
+        projects?: T;
+      };
+  mainLine?:
+    | T
+    | {
+        card?: T;
+        label?: T;
+        show?: T;
+        id?: T;
+      };
+  projectsLine?:
+    | T
+    | {
+        work?:
+          | T
+          | {
+              title?: T;
+              sub?: T;
+              dock?: T;
+            };
+        side?:
+          | T
+          | {
+              title?: T;
+              sub?: T;
+              dock?: T;
+            };
+        back?:
+          | T
+          | {
+              title?: T;
+              sub?: T;
+              dock?: T;
+            };
+      };
+  hint?:
+    | T
+    | {
+        mouse?: T;
+        touch?: T;
+      };
+  cards?:
+    | T
+    | {
+        bundle?:
+          | T
+          | {
+              title?: T;
+              count?: T;
+              cta?: T;
+            };
+        stack?:
+          | T
+          | {
+              title?: T;
+              logo?: T;
+              stickers?:
+                | T
+                | {
+                    text?: T;
+                    tilt?: T;
+                    id?: T;
+                  };
+            };
+        internships?:
+          | T
+          | {
+              title?: T;
+              year?: T;
+            };
+        writing?:
+          | T
+          | {
+              byline?: T;
+              cta?: T;
+            };
+        contact?:
+          | T
+          | {
+              to?: T;
+              from?: T;
+              stamp?: T;
+              copy?: T;
+              copied?: T;
+              copyFailed?: T;
+            };
+        preview?:
+          | T
+          | {
+              back?: T;
+            };
+      };
+  resume?:
+    | T
+    | {
+        share?: T;
+        download?: T;
+        shareLabel?: T;
+        copiedLabel?: T;
+        downloadLabel?: T;
+        downloadHint?: T;
+        pdf?: T;
+        headings?:
+          | T
+          | {
+              skills?: T;
+              experience?: T;
+              projects?: T;
+              education?: T;
+            };
+      };
+  music?:
+    | T
+    | {
+        enabled?: T;
+        muted?: T;
+        clicks?: T;
+        volume?: T;
+      };
+  sky?:
+    | T
+    | {
+        clock?: T;
+        mode?: T;
+        hour?: T;
+        title?: T;
+        live?: T;
+        presets?:
+          | T
+          | {
+              name?: T;
+              hour?: T;
+              id?: T;
+            };
+      };
+  styles?:
+    | T
+    | {
+        default?: T;
+        transition?: T;
+        switch?: T;
+        remember?: T;
+        labels?:
+          | T
+          | {
+              cards?: T;
+              island?: T;
+            };
+        postcard?:
+          | T
+          | {
+              island?:
+                | T
+                | {
+                    title?: T;
+                    body?: T;
+                    sign?: T;
+                    to?: T;
+                  };
+              cards?:
+                | T
+                | {
+                    title?: T;
+                    body?: T;
+                    sign?: T;
+                    to?: T;
+                  };
+            };
+      };
+  banner?:
+    | T
+    | {
+        show?: T;
+        text?: T;
+        linkLabel?: T;
+        linkHref?: T;
+        until?: T;
+      };
+  notFound?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        link?: T;
+      };
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  tracking?:
+    | T
+    | {
+        enabled?: T;
+        clicks?: T;
+        game?: T;
+        vitals?: T;
+        errors?: T;
+        dnt?: T;
+        retention?: T;
+        origins?: T;
+        legacyWorker?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio-game_select".
+ */
+export interface PortfolioGameSelect<T extends boolean = true> {
+  title?:
+    | T
+    | {
+        subtitle?: T;
+        tagline?: T;
+        blurb?: T;
+      };
+  moss?:
+    | T
+    | {
+        name?: T;
+        types?: T;
+      };
+  exp?:
+    | T
+    | {
+        friend?: T;
+        fix?: T;
+      };
+  species?:
+    | T
+    | {
+        key?: T;
+        no?: T;
+        name?: T;
+        kind?: T;
+        types?: T;
+        happy?: T;
+        entry?: T;
+        id?: T;
+      };
+  types?:
+    | T
+    | {
+        key?: T;
+        label?: T;
+        color?: T;
+        id?: T;
+      };
+  trainers?:
+    | T
+    | {
+        key?: T;
+        name?: T;
+        title?: T;
+        exp?: T;
+        off?: T;
+        mon?:
+          | T
+          | {
+              species?: T;
+              name?: T;
+              level?: T;
+            };
+        intro?:
+          | T
+          | {
+              line?: T;
+              id?: T;
+            };
+        win?: T;
+        lose?: T;
+        again?:
+          | T
+          | {
+              line?: T;
+              id?: T;
+            };
+        rounds?:
+          | T
+          | {
+              move?: T;
+              type?: T;
+              ready?: T;
+              hit?: T;
+              hint?: T;
+              options?:
+                | T
+                | {
+                    label?: T;
+                    type?: T;
+                    ok?: T;
+                    text?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        id?: T;
+      };
+  nurse?:
+    | T
+    | {
+        name?: T;
+        greet?:
+          | T
+          | {
+              line?: T;
+              id?: T;
+            };
+        healed?: T;
+        full?: T;
+        wake?:
+          | T
+          | {
+              line?: T;
+              id?: T;
+            };
+      };
+  strings?:
+    | T
+    | {
+        meet?: T;
+        meetBug?: T;
+        challenge?: T;
+        sendOut?: T;
+        mossIn?: T;
+        prompt?: T;
+        packetPrompt?: T;
+        inspect?: T;
+        ping?: T;
+        pickFix?: T;
+        pickCounter?: T;
+        tries?: T;
+        rootCause?: T;
+        noEffect?: T;
+        hitsBack?: T;
+        lands?: T;
+        patched?: T;
+        outOfSteam?: T;
+        mossDown?: T;
+        exp?: T;
+        levelUp?: T;
+        run?: T;
+        backOff?: T;
+        noRun?: T;
+        crewNone?: T;
+        crewAssist?: T;
+        crewNothing?: T;
+        crewTired?: T;
+        crewGuard?: T;
+        synFirstAck?: T;
+        synFirstFin?: T;
+        synFirstRst?: T;
+        syn?: T;
+        lost?: T;
+        retry?: T;
+        synAck?: T;
+        ackSyn?: T;
+        ackRst?: T;
+        ackFin?: T;
+        ack?: T;
+        connected?: T;
+      };
+  bugs?:
+    | T
+    | {
+        key?: T;
+        name?: T;
+        attack?: T;
+        type?: T;
+        level?: T;
+        off?: T;
+        intro?: T;
+        hint?: T;
+        win?: T;
+        lesson?: T;
+        moves?:
+          | T
+          | {
+              label?: T;
+              type?: T;
+              ok?: T;
+              text?: T;
+              id?: T;
+            };
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;

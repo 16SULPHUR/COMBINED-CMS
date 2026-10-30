@@ -1,6 +1,6 @@
 import type { Block, CollectionConfig } from 'payload'
 
-import { links, pastel, publicRead, tags, tone } from '../fields'
+import { collectionVersions, hidden, links, listedRead, livePreview, pastel, tags, tone } from '../fields'
 
 const shotBlocks: Block[] = [
   {
@@ -33,8 +33,9 @@ export const Projects: CollectionConfig = {
   slug: 'portfolio-projects',
   labels: { singular: 'Project', plural: 'Projects' },
   orderable: true,
-  access: publicRead,
-  admin: { useAsTitle: 'name', defaultColumns: ['name', 'group', 'year'] },
+  access: listedRead,
+  versions: collectionVersions,
+  admin: { useAsTitle: 'name', defaultColumns: ['name', 'group', 'year', 'hidden'], livePreview: livePreview() },
   fields: [
     { name: 'slug', type: 'text', required: true, unique: true, index: true },
     { name: 'name', type: 'text', required: true },
@@ -62,5 +63,6 @@ export const Projects: CollectionConfig = {
     tags('tags'),
     links(),
     { name: 'note', type: 'text' },
+    hidden,
   ],
 }

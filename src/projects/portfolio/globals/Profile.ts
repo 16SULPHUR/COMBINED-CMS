@@ -1,11 +1,13 @@
 import type { GlobalConfig } from 'payload'
 
-import { links, publicRead } from '../fields'
+import { globalVersions, links, livePreview, publicRead } from '../fields'
 
 export const Profile: GlobalConfig = {
   slug: 'portfolio-profile',
   label: 'Profile',
   access: publicRead,
+  versions: globalVersions,
+  admin: { livePreview: livePreview() },
   fields: [
     { name: 'greeting', type: 'text', required: true },
     {

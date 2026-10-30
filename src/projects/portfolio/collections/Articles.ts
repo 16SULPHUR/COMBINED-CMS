@@ -1,13 +1,14 @@
 import type { CollectionConfig } from 'payload'
 
-import { publicRead, tags } from '../fields'
+import { collectionVersions, hidden, listedRead, livePreview, tags } from '../fields'
 
 export const Articles: CollectionConfig = {
   slug: 'portfolio-articles',
   labels: { singular: 'Article', plural: 'Articles' },
   orderable: true,
-  access: publicRead,
-  admin: { useAsTitle: 'title', defaultColumns: ['title', 'publication', 'date'] },
+  access: listedRead,
+  versions: collectionVersions,
+  admin: { useAsTitle: 'title', defaultColumns: ['title', 'publication', 'date', 'hidden'], livePreview: livePreview() },
   fields: [
     { name: 'title', type: 'text', required: true },
     { name: 'publication', type: 'text', required: true },
@@ -16,5 +17,6 @@ export const Articles: CollectionConfig = {
     { name: 'excerpt', type: 'textarea', required: true },
     tags('topics'),
     { name: 'href', type: 'text', required: true, unique: true },
+    hidden,
   ],
 }
